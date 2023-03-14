@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 // Provide the http requests from client to server
 // Doing it through service allows us to centralize the http requests
 export class AccountService {
-  baseUrl = 'https://localhost:5501/api/';
+  baseUrl = 'https://localhost:5001/api/';
 
   constructor(private http: HttpClient) { }
 

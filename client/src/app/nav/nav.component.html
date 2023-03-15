@@ -2,19 +2,24 @@
     <div class="container">
         <a class="navbar-brand" href="#">Sample App</a>
 
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ul *ngIf="loggedIn" class="navbar-nav me-auto mb-2 mb-md-0" >
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">User</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Lists of Users</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled">Messages</a>
-            </li>
         </ul>
+
+        <div *ngIf="loggedIn" class="dropdown" dropdown>
+            <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Profile</a>
+            <div class="dropdown-menu" *dropdownMenu>
+                <a class="dropdown-item">Edit Profile</a>
+                <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+        </div>
         
-        <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
+        <form *ngIf="!loggedIn" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
             <input
                 name="username"
                 [(ngModel)]="model.username"

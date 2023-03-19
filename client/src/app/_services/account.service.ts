@@ -10,12 +10,12 @@ import { User } from '../_models/user';
 // Provide the http requests from client to server
 // Doing it through service allows us to centralize the http requests
 export class AccountService {
+  constructor(private http: HttpClient) { }
+
   baseUrl = 'https://localhost:5001/api/';
 
   private currentUserSource = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSource.asObservable();
-
-  constructor(private http: HttpClient) { }
 
   login(model: any){
     return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(

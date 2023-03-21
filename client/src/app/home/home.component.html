@@ -1,7 +1,7 @@
 <p>home works!</p>
 
-<div *ngIf="!registerMode" class="container mt-5">
-    <div style="text-align: center;">
+<div class="container mt-5">
+    <div *ngIf="!registerMode" style="text-align: center;">
         <h1>Homepage works</h1>
         <p class="lead">Sample intro for Homepage</p>
         <div class="text-center">
@@ -13,7 +13,7 @@
     <div *ngIf="registerMode" class="container">
         <div class="row justify-content-center">
             <div class="col-4">
-                <p>Register form goes here</p>
+                <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
             </div>
         </div>
     </div>

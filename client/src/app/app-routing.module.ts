@@ -6,14 +6,22 @@ import { LoginComponent } from './login/login.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { AuthGuard } from './_guard/auth.guard';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: '', 
+    runGuardsAndResolvers: "always",
+    canActivate: [AuthGuard],
+    children: [
+      {path: 'users', component: UserListComponent},
+      {path: 'users/:id', component: UserDetailComponent},
+      {path: 'lists', component: ListsComponent},
+      {path: 'messages', component: MessagesComponent},
+    ]
+  },
   {path: 'login', component: LoginComponent},
-  {path: 'users', component: UserListComponent},
-  {path: 'users/:id', component: UserDetailComponent},
-  {path: 'lists', component: ListsComponent},
-  {path: 'messages', component: MessagesComponent},
   {path: '**', component: HomeComponent, pathMatch: 'full'}
 ];
 

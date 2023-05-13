@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { ListsComponent } from './lists/lists.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -33,7 +34,10 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
     HttpClientModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

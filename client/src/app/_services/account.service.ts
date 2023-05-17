@@ -12,6 +12,7 @@ import { User } from '../_models/user';
 export class AccountService {
   constructor(private http: HttpClient) { }
 
+  // TODO: Move link out to environment
   baseUrl = 'https://localhost:5001/api/';
 
   private currentUserSource = new BehaviorSubject<User | null>(null);

@@ -14,10 +14,11 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { SharedModule } from './_modules/shared.module';
 import { TestErrorComponent } from './errors/test-error/test-error.component';
-import { ErrorInterceptor } from './_intereceptors/error.interceptor';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { UserCardComponent } from './users/user-card/user-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -43,9 +44,10 @@ import { UserCardComponent } from './users/user-card/user-card.component';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
-  }],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

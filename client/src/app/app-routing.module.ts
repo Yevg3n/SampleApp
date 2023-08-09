@@ -10,6 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { AuthGuard } from './_guard/auth.guard';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
     children: [
       {path: 'users', component: UserListComponent},
       {path: 'users/:username', component: UserDetailComponent},
+      {path: 'user/edit', component: UserEditComponent},
       {path: 'lists', component: ListsComponent},
       {path: 'messages', component: MessagesComponent},
     ]
